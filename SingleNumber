@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        
+        // Method 1: straight forward way, using hash map, with extra memory
+        /*
+        unordered_map<int, int> cache;
+        for (int num : nums) {
+            if (cache.count(num) == 1) {
+                cache[num] += 1;
+            }
+            else {
+                cache[num] = 1;
+            }
+        }
+        for (int num : nums) {
+            if (cache[num] == 1) {      //use the value of each entry to count
+                return num;
+            }
+        }
+        */
+        
+        // Method 2: Without extra memory, which means we can't use unordered_map
+        int res = 0;
+        for (int num : nums) {
+            res ^= num;
+        }
+        return res;
+        
+    }
+};
